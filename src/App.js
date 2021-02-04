@@ -1,7 +1,10 @@
 import {Component} from 'react';
 import './App.css';
 import tasks from './ejemplos/task.json'//importamos array con informacion
+
+//importacion de componentes
 import Tasks from './components/Tasks'//importamos componente Tasks
+import TaskForm from './components/TaskForm'//importamos componente Tasks
 
 console.log(tasks);
 
@@ -14,11 +17,11 @@ class App extends Component{
   render(){//renderiza un componente de tipo Task con una propiedad (props)
     //llamada tareas con un valor igual a las tareas que tenemos en el estado
     return <div>
+      <TaskForm/>
       <Tasks tareas={this.state.tasks}/>
     </div>
   }
 }
-
 // function Helloword(props){
 //     return(
 //       <div id="hello" >
