@@ -1,15 +1,18 @@
 import {Component} from 'react';
 import './App.css';
-import tasks from './ejemplos/task.json'
-import Tasks from './components/Tasks'
+import tasks from './ejemplos/task.json'//importamos array con informacion
+import Tasks from './components/Tasks'//importamos componente Tasks
 
 console.log(tasks);
 
 class App extends Component{
+  //aqui se definen los estados del componente app
+  //tiene un estado llamado tareas (tasks) que tiene como valor el json que importamos
   state={
     tasks:tasks
   }
-  render(){
+  render(){//renderiza un componente de tipo Task con una propiedad (props)
+    //llamada tareas con un valor igual a las tareas que tenemos en el estado
     return <div>
       <Tasks tareas={this.state.tasks}/>
     </div>
