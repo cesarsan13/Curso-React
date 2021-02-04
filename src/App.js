@@ -7,18 +7,38 @@ import Tasks from './components/Tasks'//importamos componente Tasks
 import TaskForm from './components/TaskForm'//importamos componente Tasks
 
 console.log(tasks);
-
+//en el componente app tenemos la propiedad que guerda las tareas
+//por lo tanto aqui es donde guardaremos nuestras nuevaas tareas
+//conectando el form en donde tengo los datos (TaskForm)
+//con el archivo App.js mediante una funcion
 class App extends Component{
   //aqui se definen los estados del componente app
   //tiene un estado llamado tareas (tasks) que tiene como valor el json que importamos
   state={
     tasks:tasks
   }
+  addTask = (titulo, descripcion) => {
+    const newtask = {
+      titulo:titulo,
+      descripcion:descripcion,
+      id: this.state.tasks.length
+    }
+    //despues de obtener y guardar la nueva tarea en una newtask
+    //se altera el estado diciendo
+    //toma todo lo que ya tenia en el estado de tareas y voy a agregarle algo nuevo
+    //en pocas palabras agrego un nuevo elemento al arreglo
+    this.setState({
+      tasks: [...this.state.tasks,newtask]
+    })
+    console.log(newtask);
+  }
+ 
   render(){//renderiza un componente de tipo Task con una propiedad (props)
     //llamada tareas con un valor igual a las tareas que tenemos en el estado
+
     return <div>
-      <TaskForm/>
-      <Tasks tareas={this.state.tasks}/>
+      <TaskForm addTask={this.addTask} />
+      <Tasks tareas={this.state.tasks} />
     </div>
   }
 }

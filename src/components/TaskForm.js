@@ -10,7 +10,9 @@ export default class TaskForm extends Component{
     //funciones que se disparan en los eventos
     onSubmit = evt => {
         evt.preventDefault();
-        console.log(this.state);
+        this.props.addTask(this.state.titulo,this.state.descripcion);
+
+     //   console.log(this.state);
         
     }
     onChange = evt =>{
@@ -22,6 +24,7 @@ export default class TaskForm extends Component{
         });
     }
     render(){
+        //console.log(this.props)
         return(
             //onsubmit onchange son eventos de los input
             //como vlaor tiene la funcion declarada arriba
@@ -32,17 +35,17 @@ export default class TaskForm extends Component{
             //[evt.target.name] : evt.target.value
             <form onSubmit={this.onSubmit}>
                 <input onChange={this.onChange} 
-                value={this.state.titulo} 
-                name='titulo'
-                type="text" 
-                placeholder="escribe una tarea"
+                    value={this.state.titulo} 
+                    name='titulo'
+                    type="text" 
+                    placeholder="escribe una tarea"
                 />
                 <br />
                 <br />
                 <textarea onChange={this.onChange} 
-                name='descripcion'
-                value={this.state.descripcion} 
-                placeholder="Describe la descripcion de la tarea">
+                    name='descripcion'
+                    value={this.state.descripcion} 
+                    placeholder="Describe la descripcion de la tarea">
                 </textarea>
                 <input type="submit"/>
             </form>
