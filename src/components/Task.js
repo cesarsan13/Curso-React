@@ -18,8 +18,12 @@ class Task extends Component{
         {tareas.descripcion}-
         {tareas.done}
             <input type="checkbox"/>
+            <input type="email"/>
             <button style={btn_delete}>x</button>
         </div>
+        //quiero subir estis cambios 
+        // nad amas estos
+        
         
     }
 }
