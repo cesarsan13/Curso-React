@@ -17,6 +17,21 @@ class App extends Component{
   state={
     tasks:tasks
   }
+  deleteTask = (id) => {
+    //el metodo filter permite devolver un nuevo arreglo
+    const newTask = this.state.tasks.filter(task => task.id !== id);
+    this.setState({tasks:newTask})
+  }
+  checkDone = (id) => {
+    const newTasks = this.state.tasks.map(task => {
+      if (task.id === id) {
+        task.done = !task.done//con el parentesis cambia a su valor opuesto
+      }
+      return task;
+    })
+    this.setState({tasks:newTasks});
+  }
+
   addTask = (titulo, descripcion) => {
     const newtask = {
       titulo:titulo,
@@ -38,7 +53,11 @@ class App extends Component{
 
     return <div>
       <TaskForm addTask={this.addTask} />
-      <Tasks tareas={this.state.tasks} />
+      <Tasks 
+      tareas={this.state.tasks} 
+      deleteTask={this.deleteTask} 
+      checkDone ={this.checkDone}
+      />
     </div>
   }
 }

@@ -14,6 +14,7 @@ class Task extends Component{
             textDecoration: this.props.tareas.done ? 'line-through' : 'none'
         }
     }
+   
     render(){
         //declaramos la variable constante tareas que a su vez 
         //es el elemento de this.props 
@@ -25,8 +26,8 @@ class Task extends Component{
         {tareas.titulo}-
         {tareas.descripcion}-
         {tareas.done}
-            <input type="checkbox"/>
-            <button style={btn_delete}>x</button>
+            <input defaultChecked={tareas.done} type="checkbox" onChange={this.props.checkDone.bind(this,tareas.id)}/>
+            <button style={btn_delete} onClick={this.props.deleteTask.bind(this,tareas.id)}>x</button>
         </div>
     }
 }
