@@ -5,6 +5,7 @@ import tasks from './ejemplos/task.json'//importamos array con informacion
 //importacion de componentes
 import Tasks from './components/Tasks'//importamos componente Tasks
 import TaskForm from './components/TaskForm'//importamos componente Tasks
+import Posts from './components/Posts'
 
 console.log(tasks);
 //en el componente app tenemos la propiedad que guerda las tareas
@@ -58,6 +59,7 @@ class App extends Component{
       deleteTask={this.deleteTask} 
       checkDone ={this.checkDone}
       />
+      <Posts/>
     </div>
   }
 }
