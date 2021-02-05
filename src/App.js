@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import './App.css';
 import tasks from './ejemplos/task.json'//importamos array con informacion
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 //importacion de componentes
 import Tasks from './components/Tasks'//importamos componente Tasks
@@ -53,13 +54,29 @@ class App extends Component{
     //llamada tareas con un valor igual a las tareas que tenemos en el estado
 
     return <div>
-      <TaskForm addTask={this.addTask} />
-      <Tasks 
-      tareas={this.state.tasks} 
-      deleteTask={this.deleteTask} 
-      checkDone ={this.checkDone}
-      />
-      <Posts/>
+      <Router>
+      <Link to="/">Inicio</Link>
+      <br/>
+      <Link to="/Posts">Publicaciones</Link>
+      
+      <Route exact path="/" render={ () => {
+       return <div>
+          <TaskForm addTask={this.addTask} />
+          <Tasks 
+            tareas={this.state.tasks} 
+            deleteTask={this.deleteTask} 
+            checkDone ={this.checkDone}
+          />
+        </div>
+        
+      }}>
+
+      </Route>
+      <Route exact path="/Posts" component={Posts}/>
+
+      </Router>
+     
+     
     </div>
   }
 }
